@@ -24,10 +24,14 @@ class Controller {
   }
 
   public function createMolecule() {
-    $nom = isset($_POST['nom']) ? $_POST['nom'] : '';
-    $formule = isset($_POST['formule']) ? $_POST['formule'] : '';
-    $this->model->create($nom, $formule);
-    header('Location: ?action=createMolecules');
+    if (isset($_POST['submit'])) {
+      $nom = $_POST['nom'];
+      $formule = $_POST['formule'];
+      $this->model->create($nom, $formule);
+      header('Location:?action=viewMolecules');
+  } else {
+      require 'views/createmolecule.php';
+  }
   }
 
   public function updateMolecule() {

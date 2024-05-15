@@ -1,10 +1,10 @@
 <?php include __DIR__ . '/header.php' ?>
 <form action="?action=createMolecule" method="post">
-  <label for="name">Nom de la molécule: </label>
-  <input type="text" name="name" id="name" required>
+  <label for="nom">Nom de la molécule: </label>
+  <input type="text" name="nom" id="nom" required>
 
-  <label for="formula">Formule chimique: </label>
-  <input type="text" name="formula" id="formula" required>
+  <label for="formule">Formule chimique: </label>
+  <input type="text" name="formule" id="formule" required>
 
-  <input type="submit" value="Create">
+  <input type="submit" name="submit" value="Créer">
 </form>

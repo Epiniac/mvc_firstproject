@@ -10,11 +10,11 @@ class Molecule {
     $this->connect = $db;
   }
 
-  public function create() {
+  public function create($nom,$formule) {
     $query = "INSERT INTO molecule (nom, formule) VALUES (?, ?)";
     $element = $this->connect->prepare($query);
-    $element->bindParam(1, $this->nom);
-    $element->bindParam(2, $this->formule);
+    $element->bindParam(1, $nom);
+    $element->bindParam(2, $formule);
     $element->execute();
     return $this->connect->lastInsertId();
   }
@@ -43,10 +43,10 @@ class Molecule {
     $element->execute();
   }
 
-  public function delete() {
+  public function delete($id) {
     $query = "DELETE FROM molecule WHERE id = ?";
     $element = $this->connect->prepare($query);
-    $element->bindParam(1, $this->id);
+    $element->bindParam(1, $id);
     $element->execute();
   }
 }

@@ -6,5 +6,5 @@
     <label for="formule">Formule:</label>
     <input type="text" name="formule" value="">
     <br>
-    <input type="submit" name="submit" value="Update">
+    <input type="submit" name="submit" value="Mettre à jour">
 </form>
