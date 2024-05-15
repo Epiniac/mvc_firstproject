@@ -1,4 +1,6 @@
 <?php
+require_once __DIR__ . '/../models/Molecule.php';
+
 class Controller {
   private $model;
 
@@ -7,33 +9,43 @@ class Controller {
   }
 
   public function viewMolecules() {
-    $molecules = $this->model->read();
+    $molecules = $this->model->readAll();
     require 'views/molecules.php';
   }
 
-  public function viewMolecule() {$id = isset($_GET['id']) ? $_GET['id'] : 0;
-    $molecule = $this->model->readOne($id);
-    require 'views/molecule.php';
+  public function viewMolecule() {
+    $id = isset($_GET['id']) && is_numeric($_GET['id'])? $_GET['id'] : 0;
+    if ($id > 0) {
+      $molecule = $this->model->readOneById($id);
+      require 'views/molecule.php';
+    } else {
+      echo "Erreur: Cet id ne correspond à aucune molécule ";
+    }
   }
 
   public function createMolecule() {
-    $name = isset($_POST['name']) ? $_POST['name'] : '';
-    $formula = isset($_POST['formula']) ? $_POST['formula'] : '';
-    $this->model->create($name, $formula);
-    header('Location: ?action=viewMolecules');
+    $nom = isset($_POST['nom']) ? $_POST['nom'] : '';
+    $formule = isset($_POST['formule']) ? $_POST['formule'] : '';
+    $this->model->create($nom, $formule);
+    header('Location: ?action=createMolecules');
   }
 
   public function updateMolecule() {
-    $id = isset($_GET['id']) ? $_GET['id'] : 0;
-    $name = isset($_POST['name']) ? $_POST['name'] : '';
-    $formula = isset($_POST['formula']) ? $_POST['formula'] : '';
-    $this->model->update($id, $name, $formula);
-    header('Location: ?action=viewMolecules');
-  }
+    if (isset($_POST['submit'])) {
+        $id = $_GET['id'];
+        $nom = $_POST['nom'];
+        $formule = $_POST['formule'];
+        $this->model->update($id, $nom, $formule);
+        header('Location:?action=viewMolecule&id='. $id);
+    } else {
+        $id = isset($_GET['id'])? $_GET['id'] : 0;
+        require 'views/updatemolecule.php';
+    }
+}
 
   public function deleteMolecule() {
     $id = isset($_GET['id']) ? $_GET['id'] : 0;
     $this->model->delete($id);
-    header('Location: ?action=viewMolecules');
+    header('Location: ?action=deleteMolecules');
   }
 }

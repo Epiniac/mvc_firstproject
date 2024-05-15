@@ -1,3 +1,4 @@
+<?php include __DIR__ . '/header.php' ?>
 <form action="?action=createMolecule" method="post">
   <label for="name">Nom de la molécule: </label>
   <input type="text" name="name" id="name" required>

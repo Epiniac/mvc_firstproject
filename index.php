@@ -1,6 +1,7 @@
 <?php
-
-$db = new PDO('mysql:host=localhost;dbname=blog', 'root', '');
+require_once __DIR__ . '/controllers/Controller.php';
+$db = new PDO('mysql:host=localhost;dbname=chimie', 'root', '');
+require_once __DIR__ . '/models/Molecule.php';
 
 $moleculeModel = new Molecule($db);
 
