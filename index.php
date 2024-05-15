@@ -29,5 +29,4 @@ try{
   }
 } catch (Exception $e) {
   include __DIR__ . '/views/errors/500.php';
-  throw new Exception("Error Processing Request: " + $e, 1);
 }

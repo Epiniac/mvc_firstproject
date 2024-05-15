@@ -1,7 +1,4 @@
-
-<?php
-    foreach ($molecules as $molecule):
-?>
+<?php foreach ($molecules as $molecule):?>
   <div>
     <h1><?php echo $molecule['name']; ?></h1>
     <p><?php echo $molecule['formula']; ?></p>
