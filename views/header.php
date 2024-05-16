@@ -49,7 +49,6 @@
         position: relative;
     }
 
-        // animmation
     nav a::after {
         content: '';
         position: absolute;
@@ -71,6 +70,15 @@
         justify-content: space-around;
         padding: 3em;
         
+    }
+
+    .display-form{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        padding: 6%;
+        border: solid #333 18px ;
     }
 
 
