@@ -1,6 +1,8 @@
 <?php
 #URL : http://localhost/php_mvc/index.php?action=viewMolecules
 
+session_start();
+
 require_once __DIR__ . '/controllers/Controller.php';
 $db = new PDO('mysql:host=localhost;dbname=chimie', 'root', '');
 require_once __DIR__ . '/models/Molecule.php';
